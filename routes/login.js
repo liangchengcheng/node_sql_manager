@@ -1,9 +1,4 @@
-/**
- * Created by longlingxiu on 15/3/20.
- */
-
 var mysql = require('mysql');
-
 
 /**
  *  验证用户
@@ -11,8 +6,7 @@ var mysql = require('mysql');
  * @param upwd
  * @param callback
  */
-function validataUser( uname, upwd, callback )
-{
+function validataUser( uname, upwd, callback ) {
 
     var connection = mysql.createConnection({
         host : '127.0.0.1',
@@ -20,13 +14,11 @@ function validataUser( uname, upwd, callback )
         password : '',
         port : '3306',
         database : 'mydb'
-
-
     });
 
     connection.connect();
 
-console.log('fdsfdsf')
+    console.log('fdsfdsf');
     var sql = 'select * from userinfos where loginname=? and passwd=?';
     var params = [ uname, upwd ];
 
@@ -37,18 +29,16 @@ console.log('fdsfdsf')
 
         var loginRlt = false;
 
-        console.log('oooo')
+        console.log('oooo');
 
         console.log( result );
         if( result.length == 1 ){
             loginRlt = true;
         }
 
-
         callback( loginRlt );
 
     } );
-
 
 }
 

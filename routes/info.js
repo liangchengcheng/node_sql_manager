@@ -1,17 +1,9 @@
-/**
- * Created by longlingxiu on 15/3/20.
- */
-
-
 var mysql = require('mysql');
-
-
 
 /**
  * 从数据库中获取信息
  */
-function getDataFromDB( queryCallbak )
-{
+function getDataFromDB( queryCallbak ) {
 
     var connection = mysql.createConnection({
         host : '127.0.0.1',
@@ -20,13 +12,11 @@ function getDataFromDB( queryCallbak )
         port : '3306',
         database : 'mydb'
 
-
     });
 
     connection.connect();
 
-
-    console.log('开始查询')
+    console.log('开始查询');
 
     var querySql = 'select * from userinfos';
 
@@ -37,13 +27,10 @@ function getDataFromDB( queryCallbak )
             return;
         }
 
-
         // 将结果值传递过去
         queryCallbak( result );
 
     } );
-
-
 
 }
 
@@ -51,7 +38,6 @@ function getDataFromDB( queryCallbak )
 module.exports = function( request, response, next ){
 
     console.log('进入 info 路由回调');
-
 
     // 获取数据库的查询结果
     getDataFromDB( function( result ){
@@ -62,8 +48,6 @@ module.exports = function( request, response, next ){
         });
 
     });
-
-
 
 };
 

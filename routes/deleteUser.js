@@ -1,11 +1,6 @@
-/**
- * Created by longlingxiu on 15/3/20.
- */
-
 var mysql = require('mysql');
 
-function deleteDataFromDB(id, callback )
-{
+function deleteDataFromDB(id, callback ) {
 
     var connection = mysql.createConnection({
         host : '127.0.0.1',
@@ -13,8 +8,6 @@ function deleteDataFromDB(id, callback )
         password : '',
         port : '3306',
         database : 'mydb'
-
-
     });
 
     connection.connect();
@@ -31,9 +24,7 @@ function deleteDataFromDB(id, callback )
 
         callback();
 
-
     });
-
 }
 
 module.exports = function( request, response,next  ){
@@ -51,7 +42,5 @@ module.exports = function( request, response,next  ){
         });
 
     });
-
-
 
 };
